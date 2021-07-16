@@ -1,0 +1,119 @@
+module.exports = {
+    //master config
+    master: {
+        debug: 5, // 0-5
+        dapi_tick_interval: 60000, //DAPI interval to send tick
+
+        // Local box config
+        box: {
+            password:    'IGZY5R3wVNJdMmKNr5[XLQ4Bd%', // Box server password
+            listen_ip:   '0.0.0.0', // IP of interface to listen
+            listen_port: 32600      // Port to listen
+        },
+
+        // Local reception config
+        reception: {
+            password:    'biS$MTARyQNATIp0$LRyT((2c[)Qo1', // Reception server password
+            listen_ip:   '0.0.0.0', // IP of interface to listen
+            listen_port: 58000      // Port to listen
+        },
+
+        // Wapi server config
+        wapi: {
+            password:    'j!rdH5!9WvZNQR(PF(WfLskD19uSf', // Wapi server password
+            listen_ip:   '0.0.0.0', // IP of interface to listen
+            listen_port: 13500      // Port to listen
+        },
+
+        // Network config
+        socket: {
+            ping_interval:     3000,     // Time between pings
+            ping_history_size: 10,       // How many ping times to remember
+            timeout:           60000,    // How long to wait for data before disconnect Box for inactivity
+            max_buff_size:     1024*1024 // Maximal size of buffer in bytes
+        }
+    },
+
+    //REST API website config
+    dapi: {
+        password:    'dapi', // Dapi client password
+        host:        '40.87.156.116',              // Dapi host
+        path:        '/api.php',                   // Dapi path
+        debug: 5
+    },
+
+    //config to send to reception
+    reception: {
+        debug: 5 // 0-5
+    },
+
+    //config to send to boxes
+    box: {
+        debug:                  5,      // 0-5, 6-10 for thousands of bots messages
+        delay_probe_interval:   5000,   //pause between delays tests
+        bots_per_box:           1000,   //maximum amounts of bots per box
+        socks_per_bot:          3,      //amount of SOCKS to request for bots
+        connections_per_socks:  2,      //amount of connections per SOCKS
+        party_check_threads:    30,     //how much connections to do to check if party is valid. It also will engage GPS locators from fasterst SOCKS
+        proxy_max_fails:        100,    //how much SOCKS can fail before deletion
+        proxy_max_notick:       30,     //how much SOCKS can send garbage without tick packet
+        nodata_timeout:         10000,  //how much wait for data before disconnect
+        spawn_interval:         1000,   //interval to call spawn()
+        tick_interval:          100,    //interval to move
+        status_interval:        1000,   //interval to send subscription info to user
+        connect_retry_timeout:  30000,  //timeout to try connect again after connected bots amount dropped
+        preload_amount:         1.1,    //multiplier of how much bots engage immediately. Remaining will be engaged by interval. 0.2=20% / 1=100% / 1.5=150%
+        engage_interval:        500,    //pause between engagement bots
+        bots_overjoin_max:      1.05,   //how much percent of engaged bots is allowed from ordered amount. 1.15 = 115%
+        bots_overjoin_interval: 300,    //how often to check overjoin
+        //bots_name_salt_length:  10,      //how much add random characters to bots nicknames
+        bots_name_salt_length:  5,      //how much add random characters to bots nicknames
+        bots_name_salt_symbols: [8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8203, 8204, 8205, 8206, 8207, 8239], //salt symbols
+        //bots_name_salt_symbols: [0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39], //salt symbols
+
+        coordinator_move_interval:    1000, //coordinator move interval
+        coordinator_waypoint_switch:  5, //coordinator distance to waypoint to switch
+        coordinator_fov_timeout:      20000, //timeout of FOV update packet
+        coordinator_socks_count:      0/*4*/,     //how much SOCKS take from `party_check_threads` to run coordinators
+        coordinators_per_socks:       0/*2*/,  //how much locators per one SOCKS
+        coordinators_reconnect:       500,  //time to wait before reconnect
+        gps_known_balls_life:         3000, //time of known balls life before delete
+
+        coordinators_targets: {
+            1: {
+                type: 'waypoints',
+                waypoints: [ [3535,2357], [3535+100,2357+100], [3535-100,2357-100] ]
+            },
+            2: {
+                type: 'waypoints',
+                waypoints: [ [3535,7071], [3535+100,7071+100], [3535-100,7071-100] ]
+            },
+            3: {
+                type: 'waypoints',
+                waypoints: [ [3535,11785], [3535+100,11785+100], [3535-100,11785-100] ]
+            },
+            4: {
+                type: 'waypoints',
+                waypoints: [ [10606,2357], [10606+100,2357+100], [10606-100,2357-100] ]
+            },
+            5: {
+                type: 'waypoints',
+                waypoints: [ [10606,7071], [10606+100,7071+100], [10606-100,7071-100] ]
+            },
+            6: {
+                type: 'waypoints',
+                waypoints: [ [10606,11785], [10606+100,11785+100], [10606-100,11785-100] ]
+            },
+            7: {
+                type: 'waypoints',
+                waypoints: [ [3535,2357], [3535,11785], [10606,11785],  [10606,2357] ]
+            },
+            8: {
+                type: 'biggest'
+            },
+            9: {
+                type: 'ball' //todo make locator move to owner's ball
+            }
+        }
+    }
+};

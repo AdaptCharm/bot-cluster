@@ -1,0 +1,36 @@
+module.exports = {
+    debug: 1, //will be set by master
+
+    //will be sent to master
+    box: {
+        capacity: 600 //amount of bots that box can hold
+    },
+
+    //master config
+    client: {
+        //host:   '127.0.0.1', // Master IP
+        host:   '84.200.84.181', // Master IP
+        port: 32600,         // Master port
+        password: 'IGZY5R3wVNJdMmKNr5[XLQ4Bd%z2' // Master server password
+
+    },
+
+    //IGNORE THIS! DEBUG ONLY!
+    //This will be overwrited by master
+    remote: {
+        debug:                  5,      // 0-5, 6-10 for thousands of bots messages
+        bots_per_box:           200,    //maximum amounts of bots per box
+        socks_per_bot:          0.5,    //amount of SOCKS to request for bots
+        connections_per_socks:  3,      //amount of connections per SOCKS
+        party_check_threads:    10,     //how much connections to do to check if party is valid
+        proxy_max_fails:        20,     //how much SOCKS can fail before deletion
+        spawn_interval:         1000,   //interval to call spawn()
+        tick_interval:           100,   //interval to move
+        target_balls_cords:       50,   //how much last coordinates of target balls to remember to smooth movement
+        target_balls_remember:    16,    //how much target balls to keep
+        coordinator_move_interval: 1000,
+        coordinator_waypoint_switch: 5,
+        coordinator_fov_timeout: 5000
+    }
+
+};
