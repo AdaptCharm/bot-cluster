@@ -1,3 +1,10 @@
+# Context
+In 2016, I developed a fully functional subscription-based bot service for the popular game [agar.io](https://agar.io/). The project involved creating a bot cluster from scratch using JavaScript and Node.js, utilizing the concept of classes and prototypes. The bot cluster allowed users to control hundreds of cells (bots) within the game, giving them a tremendous advantage against other real players. The bot cluster was hosted on multiple Ubuntu servers, while a browser extension was developed as the graphical user interface (GUI) to enable users to interact with the bots.
+
+By installing a chrome extension and authenticating with a valid subscription key, users could spawn hundreds of cells in game. By default, these cells were programmed to target the user's coordinates (x,y pos), enabling the user to consume them and grow larger. Additionally, users had the option to control the cells' movement direction by moving their mouse cursor, initiating gameplay where the cells would consume each other to grow larger and eat other cells. The main objective was to become the largest cell by strategically maneuvering the bots and consuming others while avoiding being consumed by larger cells.
+
+The development of this project was solely driven by educational purposes and a desire to gain a deeper understanding of websockets, binary protocols, and reverse engineering. The project aimed to acquire practical knowledge while delivering an engaging and fun gameplay experience.
+
 # Architecture version 010 #
 
 ## Definitions: ##
